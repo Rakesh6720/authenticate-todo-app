@@ -64,7 +64,7 @@ const TodosProvider = ({ children }) => {
         headers: { "Content-Type": "application/json" },
       });
       setTodos((prevTodos) => {
-        return prevTodos.filter((todo) => todo.id === id);
+        return prevTodos.filter((todo) => todo.id !== id);
       });
     } catch (error) {
       console.log(error);

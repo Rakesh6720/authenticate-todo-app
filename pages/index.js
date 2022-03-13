@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Authenticate Todo App</title>
+        <title>Authenticated Todo App</title>
       </Head>
       <Navbar />
       <main>

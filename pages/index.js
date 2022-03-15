@@ -22,9 +22,9 @@ export default function Home({ initialTodos }) {
       </Head>
       <Navbar user={user} />
       <main>
-        <h1>Todo App</h1>
         {user && (
           <>
+            <h1 className="text-2xl text-center mb-4">My Todos</h1>
             <TodoForm />
             <ul>
               {todos && todos.map((todo) => <Todo key={todo.id} todo={todo} />)}

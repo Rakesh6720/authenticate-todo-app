@@ -5,9 +5,11 @@ export default function TodoForm() {
   const { addTodo } = useContext(TodosContext);
 
   return (
-    <form>
-      <div>
-        <label htmlFor="todo">Todo</label>
+    <form className="form my-6">
+      <div className="flex flex-col text-sm mb-2">
+        <label htmlFor="todo" className="font-bold mb-2 text-gray-800">
+          Todo
+        </label>
         <input
           type="text"
           id="todo"
@@ -15,9 +17,15 @@ export default function TodoForm() {
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
           placeholder="Learn about authentication"
+          className="border border-gray-22 p-2 rounded-lg appearance-none focus:outline-none focus:border-gray-500"
         />
       </div>
-      <button type="submit">Submit</button>
+      <button
+        type="submit"
+        className="w-full rounded bg-blue-500 hover: bg-blue-600 py-2 px-4"
+      >
+        Submit
+      </button>
     </form>
   );
 }

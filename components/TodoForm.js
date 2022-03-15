@@ -4,8 +4,14 @@ export default function TodoForm() {
   const [todo, setTodo] = useState("");
   const { addTodo } = useContext(TodosContext);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTodo(todo);
+    setTodo("");
+  };
+
   return (
-    <form className="form my-6">
+    <form className="form my-6" onSubmit={handleSubmit}>
       <div className="flex flex-col text-sm mb-2">
         <label htmlFor="todo" className="font-bold mb-2 text-gray-800">
           Todo

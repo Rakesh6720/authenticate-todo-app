@@ -4,9 +4,12 @@ import Todo from "../components/Todo";
 import { table, minifyRecords } from "./api/utils/airtable";
 import { TodosContext } from "../contexts/TodosContext";
 import { useEffect, useContext } from "react";
+import TodoForm from "../components/TodoForm";
+import { useUser } from "@auth0/nextjs-auth0";
 
 export default function Home({ initialTodos }) {
   const { todos, setTodos } = useContext(TodosContext);
+  const { user, isLoading } = useUser();
 
   useEffect(() => {
     setTodos(initialTodos);
@@ -17,12 +20,17 @@ export default function Home({ initialTodos }) {
       <Head>
         <title>Authenticated Todo App</title>
       </Head>
-      <Navbar />
+      <Navbar user={user} />
       <main>
         <h1>Todo App</h1>
-        <ul>
-          {todos && todos.map((todo) => <Todo key={todo.id} todo={todo} />)}
-        </ul>
+        {user && (
+          <>
+            <TodoForm />
+            <ul>
+              {todos && todos.map((todo) => <Todo key={todo.id} todo={todo} />)}
+            </ul>
+          </>
+        )}
       </main>
     </div>
   );
